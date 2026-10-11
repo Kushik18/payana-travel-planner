@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "duckduckgo-images-api": "^1.0.5",
+    "g-i-s": "^2.1.7",
+    "google-img-scrap": "^1.2.1",
+    "mysql2": "^3.22.5"
+  }
+}

@@ -1,0 +1,252 @@
+/* ================================================================
+   ExpenseTracker.css — Payana Expense Tracker Styles
+================================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+.et {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-family: 'Inter', sans-serif;
+  color: #e2e8f0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Background photo layer */
+.et::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url('../images/istockphoto-610041376-612x612.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+/* Dark overlay */
+.et::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 5, 2, 0.90);
+  z-index: 0;
+}
+
+/* ─── CENTERED CHAT COLUMN ─── */
+.et__column {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: rgba(26, 15, 8, 0.70);
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+  border: 1px solid rgba(194, 178, 128, 0.12);
+  border-radius: 0;
+  overflow-y: auto;
+  padding: 4rem 1.5rem;
+}
+.et__column::-webkit-scrollbar { display: none; }
+.et__column { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Header ── */
+.et__header { text-align: center; margin-bottom: 2.5rem; position: relative; z-index: 1; }
+.et__eyebrow { font-size: .75rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: #a855f7; margin-bottom: .5rem; }
+.et__title { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800; color: #f1f5f9; letter-spacing: -.03em; margin: 0 0 .5rem; }
+.et__title span { color: #a855f7; }
+.et__subtitle { color: #64748b; font-size: .95rem; max-width: 520px; margin: 0 auto; }
+
+/* ── Total Band ── */
+.et__total-band {
+  max-width: 1100px;
+  margin: 0 auto 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.et__stat {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+  padding: 1.2rem 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.et__stat-icon {
+  font-size: 1.8rem;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.et__stat-value { font-size: 1.3rem; font-weight: 800; color: #f1f5f9; letter-spacing: -.02em; }
+.et__stat-label { font-size: .72rem; color: #64748b; margin-top: .1rem; text-transform: uppercase; letter-spacing: .06em; font-weight: 600; }
+
+/* ── Layout ── */
+.et__layout {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 900px) { .et__layout { grid-template-columns: 1fr; } }
+
+/* ── Cards ── */
+.et__card {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 20px;
+  padding: 1.75rem;
+        -webkit-backdrop-filter: blur(16px);
+        backdrop-filter: blur(16px);
+}
+
+.et__card-title { font-size: 1rem; font-weight: 700; color: #f1f5f9; margin: 0 0 1.2rem; display: flex; align-items: center; gap: .5rem; }
+
+/* ── Form ── */
+.et__field { display: flex; flex-direction: column; gap: .35rem; margin-bottom: .9rem; }
+.et__label { font-size: .72rem; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: .06em; }
+
+.et__input, .et__select, .et__textarea {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 10px;
+  padding: .65rem 1rem;
+  color: #e2e8f0;
+  font-size: .88rem;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: all .2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.et__input::placeholder, .et__textarea::placeholder { color: #475569; }
+.et__input:focus, .et__select:focus, .et__textarea:focus {
+  border-color: rgba(168,85,247,.5);
+  background: rgba(255,255,255,.08);
+  box-shadow: 0 0 0 3px rgba(168,85,247,.1);
+}
+.et__select option { background: #0d1a2e; }
+.et__textarea { resize: vertical; min-height: 64px; }
+
+.et__form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+
+/* Category chip selector */
+.et__cat-chips { display: flex; flex-wrap: wrap; gap: .4rem; }
+.et__cat-chip {
+  padding: .35rem .85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.1);
+  background: rgba(255,255,255,.04);
+  font-size: .78rem;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all .2s;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+}
+
+.et__cat-chip--active {
+  font-weight: 600;
+}
+
+.et__add-btn {
+  width: 100%;
+  margin-top: .5rem;
+  padding: .85rem;
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  font-size: .95rem;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(168,85,247,.3);
+  transition: all .25s;
+}
+
+.et__add-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(168,85,247,.45); }
+.et__add-btn:disabled { opacity: .4; cursor: not-allowed; }
+
+.et__update-btn { background: linear-gradient(135deg, #0369a1, #0ea5e9); }
+.et__cancel-btn { width: 100%; margin-top: .4rem; padding: .6rem; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); border-radius: 10px; color: #94a3b8; font-family: 'Inter', sans-serif; font-size: .85rem; cursor: pointer; transition: all .2s; }
+.et__cancel-btn:hover { background: rgba(255,255,255,.08); }
+
+/* ── Expense List ── */
+.et__list-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; flex-wrap: wrap; gap: .5rem; }
+.et__filter-row { display: flex; gap: .5rem; flex-wrap: wrap; }
+.et__filter-chip {
+  padding: .3rem .75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.1);
+  background: rgba(255,255,255,.04);
+  font-size: .75rem;
+  font-family: 'Inter', sans-serif;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all .2s;
+}
+.et__filter-chip--active { background: rgba(168,85,247,.15); border-color: rgba(168,85,247,.4); color: #c4b5fd; }
+
+.et__empty { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 200px; gap: .75rem; color: #475569; text-align: center; font-size: .9rem; }
+.et__empty-icon { font-size: 2.5rem; opacity: .4; }
+
+/* ── Expense Items ── */
+.et__items { display: flex; flex-direction: column; gap: .6rem; max-height: 480px; overflow-y: auto; padding-right: 4px; }
+.et__items::-webkit-scrollbar { width: 4px; }
+.et__items::-webkit-scrollbar-track { background: transparent; }
+.et__items::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius: 4px; }
+
+.et__item {
+  display: flex;
+  align-items: center;
+  gap: .85rem;
+  padding: .85rem 1rem;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 12px;
+  transition: all .2s;
+}
+
+.et__item:hover { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12); }
+.et__item--editing { border-color: rgba(14,165,233,.4); background: rgba(14,165,233,.05); }
+
+.et__item-icon { font-size: 1.4rem; flex-shrink: 0; }
+.et__item-body { flex: 1; min-width: 0; }
+.et__item-top { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
+.et__item-desc { font-size: .88rem; font-weight: 600; color: #e2e8f0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.et__item-amount { font-size: .95rem; font-weight: 800; color: #f1f5f9; flex-shrink: 0; }
+.et__item-meta { display: flex; gap: .6rem; margin-top: .25rem; flex-wrap: wrap; }
+.et__item-cat { font-size: .7rem; padding: 2px 8px; border-radius: 999px; font-weight: 600; }
+.et__item-date { font-size: .7rem; color: #475569; }
+
+.et__item-actions { display: flex; gap: .4rem; flex-shrink: 0; }
+.et__icon-btn { width: 30px; height: 30px; border-radius: 8px; border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.04); color: #94a3b8; font-size: .85rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .2s; }
+.et__icon-btn:hover { background: rgba(255,255,255,.1); }
+.et__icon-btn--del:hover { background: rgba(239,68,68,.15); border-color: rgba(239,68,68,.3); color: #fca5a5; }
+.et__icon-btn--edit:hover { background: rgba(14,165,233,.15); border-color: rgba(14,165,233,.3); color: #7dd3fc; }
